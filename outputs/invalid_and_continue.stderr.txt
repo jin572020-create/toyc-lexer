@@ -1,0 +1,2 @@
+1:5: unexpected character '@'
+1:9: unexpected character '$'

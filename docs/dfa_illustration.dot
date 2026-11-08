@@ -1,0 +1,15 @@
+digraph DFA {
+  graph [rankdir=LR, bgcolor="white", label="ToyC lexer - selected DFA branches (schematic)", labelloc=t, fontsize=17];
+  node [shape=circle, fontname="DejaVu Sans", fontsize=10];
+  edge [fontname="DejaVu Sans", fontsize=10];
+  start [shape=point]; q0 [label="start"];
+  start -> q0;
+  lt [label="<", shape=doublecircle]; le [label="<=", shape=doublecircle];
+  q0 -> lt [label="<"]; lt -> le [label="="];
+  i [label="i"]; in [label="in"]; kwint [label="int keyword", shape=doublecircle]; ident [label="Ident",shape=doublecircle];
+  q0 -> i [label="i"]; i -> in [label="n"]; in -> kwint [label="t"];
+  kwint -> ident [label="letter/digit/_"]; ident -> ident [label="letter/digit/_"];
+  zero [label="0 integer",shape=doublecircle]; nonzero [label="nonzero integer",shape=doublecircle];
+  q0 -> zero [label="0"]; q0 -> nonzero [label="1..9"]; nonzero -> nonzero [label="0..9"];
+  note [shape=note, label="Illustration only.\nFull actual minimized DFA:\noutputs/dfa_transitions.tsv"];
+}
