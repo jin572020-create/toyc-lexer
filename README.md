@@ -7,17 +7,12 @@
 ```bash
 cmake -S . -B build
 cmake --build build
-./build/compiler -token < tests/comprehensive.c > outputs/comprehensive.actual.token
-./build/compiler -dump-dfa > outputs/dfa_transitions.tsv
+./compiler -token < tests/comprehensive.c > outputs/comprehensive.actual.token
+./compiler -dump-dfa > outputs/dfa_transitions.tsv
 python3 tests/run_tests.py
 ```
 
-其中 `compiler` 生成在 `build/` 目录内。评测环境若要求 `./compiler -token`，可复制到项目根目录：
-
-```bash
-cp build/compiler ./compiler
-./compiler -token < tests/comprehensive.c > test.token
-```
+`compiler` 由 CMake 在仓库根目录直接生成，并具有 Linux 可执行权限。请不要通过 GitHub 网页上传本地编译的 `compiler` 二进制文件。
 
 程序从 **stdin** 读取，向 **stdout** 输出 Token，错误写入 **stderr**。有词法错误返回 1，无错误返回 0。
 

@@ -2,7 +2,7 @@
 from pathlib import Path
 import subprocess, sys, json
 root=Path(__file__).resolve().parents[1]
-exe=root/'build/compiler'
+exe=root/'compiler'
 tests=[
  ('keyword_and_id','int integer if iff\n', ['0:\'int\':"int"','1:Ident:"integer"','2:\'if\':"if"','3:Ident:"iff"'], [], 0),
  ('integer_zero','0 123 012\n',['0:IntConst:0','1:IntConst:123','2:IntConst:0','3:IntConst:12'],[],0),
